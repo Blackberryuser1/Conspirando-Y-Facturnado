@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conspirando Y Facturando | Centro de Análisis Legal y Medios</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617'
+                        },
+                        amber: {
+                            500: '#f59e0b',
+                            600: '#d97706'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col font-sans">
+
+    <!-- Header / Banner -->
+    <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-50">
+        <!-- Top bar with contact info / submission -->
+        <div class="bg-slate-950 text-slate-400 text-xs py-2 px-4 border-b border-slate-800">
+            <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+                <div class="flex items-center gap-4">
+                    <span><i data-lucide="shield-alert" class="inline w-3.5 h-3.5 text-amber-500 mr-1"></i> Conspirando Y Facturando — Análisis Legal e Investigaciones</span>
+                    <span class="hidden md:inline text-slate-600">|</span>
+                    <span class="hidden md:inline">Justicia y Derechos Constitucionales</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="#submit-video" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1 transition-colors">
+                        <i data-lucide="video" class="w-3.5 h-3.5"></i> Enviar Video / Caso
+                    </a>
+                    <button id="themeToggle" class="p-1 rounded bg-slate-800 text-slate-300 hover:text-white transition-colors" title="Cambiar Tema">
+                        <i data-lucide="sun" class="w-3.5 h-3.5 hidden dark:block"></i>
+                        <i data-lucide="moon" class="w-3.5 h-3.5 block dark:hidden"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Branding Area -->
+        <div class="max-w-7xl mx-auto px-4 py-6 sm:py-8">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                <div>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white flex items-center gap-4">
+                        <!-- Disin Studios Inspired Cyber Fingerprint Logo -->
+                        <div class="relative w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-slate-950 border border-slate-700/80 p-1.5 shrink-0 overflow-hidden shadow-lg flex items-center justify-center group">
+                            <!-- Background Tech Code Lines -->
+                            <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:8px_8px]"></div>
+                            
+                            <!-- Fingerprint Graphic (SVG) -->
+                            <svg class="w-full h-full text-slate-300 relative z-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+                                <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+                                <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02a10 10 0 0 0-2.27-7.63 7.8 7.8 0 0 0-6.9-2.37" />
+                                <path d="M2 12a10 10 0 0 1 18-6" />
+                                <path d="M2 16h.01" />
+                                <path d="M21.8 16c.2-2 .13-3.71-.3-5.32a12.8 12.8 0 0 0-6.66-7.85A12 12 0 0 0 5 2" />
+                                <path d="M6 13c.09 2.07.72 4.14 1.8 6" />
+                                <path d="M9 6.8a6 6 0 0 1 9 5.2c0 .47 0 .97-.07 1.48" />
+                            </svg>
+
+                            <!-- Laser Scan Line -->
+                            <div class="absolute inset-x-0 h-0.5 bg-red-500 shadow-[0_0_8px_#ef4444] z-20 animate-[bounce_3s_infinite] top-1/2"></div>
+                            <!-- Crosshair Center dot -->
+                            <div class="absolute w-1.5 h-1.5 rounded-full bg-red-500 z-30 shadow-[0_0_6px_#ef4444]"></div>
+                        </div>
+
+                        <span>Conspirando Y Facturando</span>
+                    </h1>
+                    <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-4xl leading-relaxed">
+                        Análisis Legal • Derechos Constitucionales •  Casos Destacados • <span class="text-amber-400 font-medium">Análisis de Crimen Cibernético</span> • <span class="text-amber-400 font-medium">Analisis de Tráfico </span> • <span class="text-amber-400 font-medium">Leyes de Armas de Fuego</span> • <span class="text-amber-400 font-medium"> 42 U.S.C 1985(3) <span class="text-amber-400 font-medium"> • RICO Violations
+                    </p>
+                </div>
+
+                <!-- Live Search Bar -->
+                <div class="relative w-full lg:w-80">
+                    <input type="text" id="searchInput" placeholder="Buscar cibercrimen, tráfico humano, casos..." 
+                           class="w-full pl-10 pr-4 py-2.5 bg-slate-800 border border-slate-700 rounded-lg text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:border-amber-500 transition-colors">
+                    <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <nav class="bg-slate-800/80 backdrop-blur border-t border-slate-700/50">
+            <div class="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between">
+                <ul class="flex flex-wrap items-center space-x-1 sm:space-x-6 text-sm font-medium py-3">
+                    <li><a href="#posts" class="text-amber-400 font-semibold px-2 py-1 rounded hover:bg-slate-700/50">Inicio</a></li>
+                    <li><a href="#cybercrime" class="text-slate-300 hover:text-white px-2 py-1 rounded hover:bg-slate-700/50 transition-colors flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-cyan-400"></i> Crimen Cibernético</a></li>
+                    <li><a href="#human-trafficking" class="text-slate-300 hover:text-white px-2 py-1 rounded hover:bg-slate-700/50 transition-colors flex items-center gap-1.5"><i data-lucide="users" class="w-4 h-4 text-rose-400"></i> Tráfico Humano</a></li>
+                    <li><a href="#about" class="text-slate-300 hover:text-white px-2 py-1 rounded hover:bg-slate-700/50 transition-colors">Sobre Nosotros</a></li>
+                    <li><a href="#resources" class="text-slate-300 hover:text-white px-2 py-1 rounded hover:bg-slate-700/50 transition-colors">Repositorio Legales</a></li>
+                    <li><a href="#submit-video" class="text-slate-300 hover:text-white px-2 py-1 rounded hover:bg-slate-700/50 transition-colors">Enviar Video</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Announcement / Featured Alert -->
+    <section class="bg-amber-500/10 border-b border-amber-500/20 py-3 px-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between text-xs sm:text-sm text-amber-700 dark:text-amber-300">
+            <div class="flex items-center gap-2 overflow-hidden">
+                <span class="bg-amber-500 text-slate-950 px-2 py-0.5 rounded font-bold uppercase text-[10px] shrink-0">Áreas de Especialización</span>
+                <span class="truncate font-medium">Investigación Especializada en Crimen Cibernético, Redes Transnacionales de Tráfico Humano y Forense Digital Constitucional.</span>
+            </div>
+            <a href="#cyber-trafficking-post" class="hidden sm:inline-flex items-center gap-1 font-bold underline hover:no-underline shrink-0 ml-2">
+                Ver Investigación <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+        <!-- Primary Feed (Left Columns) -->
+        <section class="lg:col-span-8 space-y-10" id="posts">
+
+            <!-- Filter Status Indicator -->
+            <div id="filterStatus" class="hidden bg-slate-200 dark:bg-slate-800 p-3 rounded-lg flex justify-between items-center text-sm">
+                <span>Mostrando resultados de búsqueda para: <strong id="filterTerm" class="text-amber-600 dark:text-amber-400"></strong></span>
+                <button id="resetSearch" class="text-xs bg-slate-300 dark:bg-slate-700 px-2.5 py-1 rounded hover:opacity-80 transition-opacity">Limpiar Búsqueda</button>
+            </div>
+
+            <!-- POST ESPECIALIZADO: CRIMEN CIBERNÉTICO & TRÁFICO HUMANO -->
+            <article id="cyber-trafficking-post" class="post-card bg-white dark:bg-slate-900 rounded-xl border-2 border-cyan-500/30 dark:border-cyan-500/40 overflow-hidden shadow-lg hover:shadow-cyan-500/10 transition-all">
+                <div class="p-6">
+                    <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 dark:text-slate-400 mb-3">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                            <span>24 de Octubre, 2026</span>
+                            <span>•</span>
+                            <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-cyan-400"></i>
+                            <span class="font-semibold text-cyan-600 dark:text-cyan-400">Investigación Forense Digital</span>
+                        </div>
+                        <span class="bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 px-2.5 py-0.5 rounded border border-cyan-500/30 text-[11px] font-bold">Investigación Especializada</span>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white hover:text-cyan-500 transition-colors mb-3">
+                        Desarticulación de Redes Ciber-Criminales y Tráfico Humano mediante Inteligencia OSINT y Análisis Forense
+                    </h2>
+
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+                        Analizamos cómo las técnicas de cibercrimen (criptografía no rastreable, phishing de credenciales y explotación en la Dark Web) son empleadas por organizaciones transnacionales para el tráfico de personas. Desglosamos el peritaje digital, el análisis informático de metadatos geolocalizados y las implicaciones legales para la protección de víctimas y preservación de evidencia constitucionales bajo el Common Law.
+                    </p>
+
+                    <!-- Custom Visual Banner for Cybercrime / Human Trafficking -->
+                    <div class="relative w-full h-48 sm:h-64 rounded-lg overflow-hidden bg-slate-950 border border-slate-800 mb-4 p-4 flex flex-col justify-between group">
+                        <!-- Matrix Grid BG -->
+                        <div class="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#0891b2_1px,transparent_1px),linear-gradient(to_bottom,#0891b2_1px,transparent_1px)] bg-[size:16px_16px]"></div>
+                        
+                        <div class="relative z-10 flex justify-between items-start">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-rose-500/20 text-rose-300 border border-rose-500/40 px-3 py-1 rounded-md text-xs font-bold flex items-center gap-1.5">
+                                    <i data-lucide="users" class="w-3.5 h-3.5"></i> Tráfico Humano
+                                </span>
+                                <span class="bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 px-3 py-1 rounded-md text-xs font-bold flex items-center gap-1.5">
+                                    <i data-lucide="terminal" class="w-3.5 h-3.5"></i> Análisis de Ciber-Crimen
+                                </span>
+                            </div>
+                            <span class="text-emerald-400 text-xs font-mono bg-emerald-950/80 px-2 py-1 rounded border border-emerald-500/40 animate-pulse">
+                                RASTREO ACTIVO
+                            </span>
+                        </div>
+
+                        <div class="relative z-10 text-white">
+                            <h3 class="text-lg sm:text-xl font-bold font-mono text-cyan-400">Estructura Digital de Rastreo y Defensa Constitucional</h3>
+                            <p class="text-xs text-slate-300 mt-1 max-w-2xl">Peritaje de cadena de custodia digital, extracción de metadatos exif en dispositivos confiscados y análisis probatorio civil/penal.</p>
+                        </div>
+                    </div>
+
+                    <!-- PDF Attachments / Legal Downloads -->
+                    <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700/60 mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-cyan-100 dark:bg-cyan-950/60 text-cyan-600 dark:text-cyan-400 rounded-lg">
+                                <i data-lucide="file-code" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-800 dark:text-slate-200">Guía de Peritaje en Crimen Cibernético y Trata (PDF)</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">ANALISIS_CRIMEN_CIBERNETICO_TRAFICO_2026.pdf</p>
+                            </div>
+                        </div>
+                        <a href="#" class="inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-bold text-white bg-cyan-600 hover:bg-cyan-700 rounded-lg transition-colors">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i> Descargar Reporte
+                        </a>
+                    </div>
+
+                    <!-- Categories and Tags -->
+                    <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap gap-1.5">
+                        <span class="bg-cyan-100 dark:bg-cyan-950/50 text-cyan-800 dark:text-cyan-300 text-[11px] font-semibold px-2.5 py-0.5 rounded-full">Análisis de Crimen Cibernético</span>
+                        <span class="bg-rose-100 dark:bg-rose-950/50 text-rose-800 dark:text-rose-300 text-[11px] font-semibold px-2.5 py-0.5 rounded-full">Tráfico Humano</span>
+                        <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[11px] px-2.5 py-0.5 rounded-full">Informática Forense</span>
+                        <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[11px] px-2.5 py-0.5 rounded-full">Inteligencia OSINT</span>
+                        <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[11px] px-2.5 py-0.5 rounded-full">Cadena de Custodia</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- POST 1 -->
+            <article id="post-tesla" class="post-card bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div class="p-6">
+                    <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-3">
+                        <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                        <span>16 de Octubre, 2026</span>
+                        <span>•</span>
+                        <i data-lucide="user" class="w-3.5 h-3.5"></i>
+                        <span class="font-semibold text-slate-700 dark:text-slate-300">Conspirando Y Facturando</span>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white hover:text-amber-600 dark:hover:text-amber-400 transition-colors mb-3">
+                        Un Tesla Salva a su Dueño de ir a la Cárcel
+                    </h2>
+
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+                        Kevin Finley acababa de regresar a casa tras llevar a sus hijos a la escuela. Mientras la puerta del garaje se cerraba, escuchó gritos que parecían órdenes policiales. Al reabrir el garaje para averiguar qué sucedía, quedó sorprendido al ver a un oficial apuntándole con un arma. Fue encadenado a mano armada y acusado de huir de una detención de tráfico, un delito grave. Afortunadamente, Kevin recordó que su Tesla había grabado todo el recorrido.
+                    </p>
+
+                    <!-- Responsive Video Container -->
+                    <div class="aspect-video w-full rounded-lg overflow-hidden bg-black mb-4 border border-slate-800 shadow-inner">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/A4Q8q0KQQ14" title="Tesla Salva a Su Dueño" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+
+                    <!-- PDF Attachments / Legal Downloads -->
+                    <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700/60 mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400 rounded-lg">
+                                <i data-lucide="file-text" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-800 dark:text-slate-200">Transcripción del Juicio (PDF)</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">FINLEY.Transcripcion.JUICIO.16.10.2026.pdf</p>
+                            </div>
+                        </div>
+                        <a href="#" class="inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-bold text-white bg-slate-900 dark:bg-slate-700 hover:bg-amber-600 dark:hover:bg-amber-500 rounded-lg transition-colors">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i> Descargar Documento
+                        </a>
+                    </div>
+
+                    <!-- Categories and Tags -->
+                    <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap gap-1.5">
+                        <span class="bg-amber-100 dark:bg-amber-950/50 text-amber-800 dark:text-amber-300 text-[11px] font-semibold px-2.5 py-0.5 rounded-full">Abuso Policial</span>
+                        <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[11px] px-2.5 py-0.5 rounded-full">Arresto Ilegal</span>
+                        <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[11px] px-2.5 py-0.5 rounded-full">Cámara de Auto</span>
+                        <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[11px] px-2.5 py-0.5 rounded-full">Tesla</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- POST 2 -->
+            <article class="post-card bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div class="p-6">
+                    <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-3">
+                        <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                        <span>9 de Octubre, 2026</span>
+                        <span>•</span>
+                        <i data-lucide="user" class="w-3.5 h-3.5"></i>
+                        <span class="font-semibold text-slate-700 dark:text-slate-300">Conspirando Y Facturando</span>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white hover:text-amber-600 dark:hover:text-amber-400 transition-colors mb-3">
+                        Oficial crea reporte falso de madre arrestada ilegalmente | ACTUALIZACIÓN
+                    </h2>
+
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+                        Hace un año publicamos un análisis sobre el cabo Charles Mills de la Oficina del Alguacil del Condado de Cherokee (GA), quien ingresó al hogar de Natasha López sin una orden judicial. En una actualización impactante, nuevos detalles provocaron el despido del oficial tras la intervención de abogados en derechos civiles.
+                    </p>
+
+                    <!-- Responsive Video Container -->
+                    <div class="aspect-video w-full rounded-lg overflow-hidden bg-black mb-4 border border-slate-800 shadow-inner">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/BODKKxGHuQQ" title="Actualización sobre abuso policial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+
+                    <!-- Categories and Tags -->
+                    <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap gap-1.5">
+                        <span class="bg-amber-100 dark:bg-amber-950/50 text-amber-800 dark:text-amber-300 text-[11px] font-semibold px-2.5 py-0.5 rounded-full">Demandas Legales</span>
+                        <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[11px] px-2.5 py-0.5 rounded-full">Órdenes Judiciales</span>
+                        <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[11px] px-2.5 py-0.5 rounded-full">Georgia</span>
+                        <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[11px] px-2.5 py-0.5 rounded-full">Cámara Corporal</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- POST 3 -->
+            <article class="post-card bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div class="p-6">
+                    <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-3">
+                        <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                        <span>30 de Septiembre, 2026</span>
+                        <span>•</span>
+                        <i data-lucide="user" class="w-3.5 h-3.5"></i>
+                        <span class="font-semibold text-slate-700 dark:text-slate-300">Conspirando Y Facturando</span>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white hover:text-amber-600 dark:hover:text-amber-400 transition-colors mb-3">
+                        Policía siembra evidencia para incriminar a mujer inocente y es despedido (Parte 3)
+                    </h2>
+
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+                        El patrullero estatal Christian Morphis fue captado sembrando sustancias ilícitas a Amanda Prince. En este desenlace, los documentos de asuntos internos y expedientes de interrogatorio revelan las consecuencias legales y el despido oficial de Morphis.
+                    </p>
+
+                    <div class="aspect-video w-full rounded-lg overflow-hidden bg-black mb-4 border border-slate-800 shadow-inner">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/aX37POVeAbM" title="Policía Siembra Evidencia Parte 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+
+                    <!-- Multiple File Attachments -->
+                    <div id="resources" class="space-y-2 mb-4">
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-3 rounded-lg border border-slate-200 dark:border-slate-700/60 flex items-center justify-between text-xs">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="file" class="w-4 h-4 text-amber-500"></i>
+                                <span class="font-semibold text-slate-700 dark:text-slate-300">Demanda Federal §1983 - Prince v. Morphis</span>
+                            </div>
+                            <a href="#" class="text-amber-600 dark:text-amber-400 hover:underline font-bold">Descargar PDF</a>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-3 rounded-lg border border-slate-200 dark:border-slate-700/60 flex items-center justify-between text-xs">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="file" class="w-4 h-4 text-amber-500"></i>
+                                <span class="font-semibold text-slate-700 dark:text-slate-300">Informe Final de Asuntos Internos (ASP)</span>
+                            </div>
+                            <a href="#" class="text-amber-600 dark:text-amber-400 hover:underline font-bold">Descargar PDF</a>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap gap-1.5">
+                        <span class="bg-amber-100 dark:bg-amber-950/50 text-amber-800 dark:text-amber-300 text-[11px] font-semibold px-2.5 py-0.5 rounded-full">Corrupción Policial</span>
+                        <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[11px] px-2.5 py-0.5 rounded-full">Policía Estatal de Arkansas</span>
+                        <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[11px] px-2.5 py-0.5 rounded-full">Demanda Civil §1983</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Pagination Buttons -->
+            <div class="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-800">
+                <button class="px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-medium hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors flex items-center gap-1.5">
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i> Publicaciones Anteriores
+                </button>
+                <span class="text-xs text-slate-500">Página 1 de 12</span>
+                <button class="px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-400 rounded-lg text-sm font-medium opacity-50 cursor-not-allowed flex items-center gap-1.5" disabled>
+                    Publicaciones Recientes <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+        </section>
+
+        <!-- Sidebar Section (Right Column) -->
+        <aside class="lg:col-span-4 space-y-8">
+
+            <!-- About Attorney / Brand Card -->
+            <div id="about" class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-16 h-16 rounded-full bg-slate-800 text-amber-500 border-2 border-amber-500 flex items-center justify-center font-bold text-lg text-center leading-tight shrink-0 p-1">
+                        CYF
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-lg">Conspirando Y Facturando</h3>
+                        <p class="text-xs text-amber-600 dark:text-amber-400 font-semibold">Análisis Legal y Contenido Constitucional</p>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                    Plataforma dedicada al análisis de derechos constitucionales, investigaciones de mala conducta y cobertura de casos judiciales relevantes.
+                </p>
+                <a href="#submit-video" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase tracking-wider rounded-lg transition-colors">
+                    <i data-lucide="send" class="w-4 h-4"></i> Consulta o Envío de Caso
+                </a>
+            </div>
+
+            <!-- YouTube Channel Callout -->
+            <div id="youtube" class="bg-gradient-to-br from-red-900/30 to-slate-900 p-6 rounded-xl border border-red-500/30 text-white shadow-sm">
+                <div class="flex items-center gap-2 text-red-500 mb-2">
+                    <i data-lucide="youtube" class="w-6 h-6"></i>
+                    <span class="font-black tracking-wide uppercase text-xs">Canal Oficial de YouTube</span>
+                </div>
+                <h4 class="font-bold text-lg mb-2">Conspirando Y Facturando</h4>
+                <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                    Únete a nuestra comunidad en YouTube para ver desgloses de grabaciones de cámaras corporales, análisis constitucionales e investigaciones judiciales.
+                </p>
+                <a href="https://youtube.com" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg transition-colors">
+                    Suscribirse en YouTube <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+            </div>
+
+            <!-- Submit Video Box -->
+            <div id="submit-video" class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h3 class="font-bold text-slate-900 dark:text-white text-lg mb-1 flex items-center gap-2">
+                    <i data-lucide="upload-cloud" class="w-5 h-5 text-amber-500"></i> Envía tu Caso o Video
+                </h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                    ¿Tienes grabaciones o evidencia de violaciones a tus derechos civiles? Envía los detalles para su revisión.
+                </p>
+
+                <form id="submissionForm" class="space-y-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase mb-1">Nombre Completo</label>
+                        <input type="text" required class="w-full p-2 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-amber-500" placeholder="Tu nombre">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase mb-1">Correo Electrónico</label>
+                        <input type="email" required class="w-full p-2 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-amber-500" placeholder="correo@ejemplo.com">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase mb-1">Enlace del Video o Resumen</label>
+                        <textarea rows="3" required class="w-full p-2 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-amber-500" placeholder="Proporciona un enlace de YouTube/Drive o una breve descripción..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-2.5 bg-slate-900 dark:bg-slate-700 hover:bg-slate-800 text-white font-bold text-xs rounded transition-colors">
+                        Enviar Información Confidencial
+                    </button>
+                </form>
+                <div id="formSuccess" class="hidden mt-3 p-3 bg-emerald-100 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-300 text-xs rounded border border-emerald-300 dark:border-emerald-800">
+                    ¡Gracias! Tu información ha sido recibida con éxito.
+                </div>
+            </div>
+
+            <!-- Categories / Topics -->
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3 border-b border-slate-200 dark:border-slate-800 pb-2">
+                    Especialidades y Temas Legales
+                </h3>
+                <ul class="space-y-2 text-xs font-medium text-slate-600 dark:text-slate-400">
+                    <li><a href="#" class="hover:text-cyan-400 flex justify-between items-center py-1 text-cyan-600 dark:text-cyan-400 font-bold"><span>Análisis de Crimen Cibernético</span> <span class="bg-cyan-100 dark:bg-cyan-950/80 px-2 py-0.5 rounded text-[10px]">34</span></a></li>
+                    <li><a href="#" class="hover:text-rose-400 flex justify-between items-center py-1 text-rose-600 dark:text-rose-400 font-bold"><span>Investigación de Tráfico Humano</span> <span class="bg-rose-100 dark:bg-rose-950/80 px-2 py-0.5 rounded text-[10px]">27</span></a></li>
+                    <li><a href="#" class="hover:text-amber-500 flex justify-between items-center py-1"><span>Abuso Policial</span> <span class="bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-[10px]">42</span></a></li>
+                    <li><a href="#" class="hover:text-amber-500 flex justify-between items-center py-1"><span>Registro e Inspección (4ta Enmienda)</span> <span class="bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-[10px]">28</span></a></li>
+                    <li><a href="#" class="hover:text-amber-500 flex justify-between items-center py-1"><span>Arrestos Injustificados</span> <span class="bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-[10px]">19</span></a></li>
+                    <li><a href="#" class="hover:text-amber-500 flex justify-between items-center py-1"><span>Demandas Federales §1983</span> <span class="bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-[10px]">15</span></a></li>
+                </ul>
+            </div>
+
+        </aside>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 text-slate-400 text-xs py-10">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <div class="flex items-center gap-3 text-white font-bold text-base mb-3">
+                    <div class="relative w-6 h-6 rounded bg-slate-950 border border-slate-700 p-0.5 overflow-hidden flex items-center justify-center">
+                        <svg class="w-full h-full text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+                            <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02a10 10 0 0 0-2.27-7.63" />
+                            <path d="M2 12a10 10 0 0 1 18-6" />
+                        </svg>
+                        <div class="absolute inset-x-0 h-0.5 bg-red-500 shadow-[0_0_4px_#ef4444] top-1/2"></div>
+                    </div>
+                    <span>Conspirando Y Facturando</span>
+                </div>
+                <p class="leading-relaxed text-slate-400">
+                    Dedicados al análisis de derechos constitucionales, investigaciones especializadas en crimen cibernético, combate al tráfico humano y responsabilidad extracontractual (Common Law Torts).
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-sm mb-3">Aviso Legal</h4>
+                <p class="leading-relaxed text-slate-400">
+                    La información en este sitio web es solo para fines educativos e informativos y no constituye asesoramiento legal directo. Ver videos o leer artículos no establece una relación abogado-cliente.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-sm mb-3">Navegación Rápida</h4>
+                <ul class="space-y-2">
+                    <li><a href="#cybercrime" class="hover:text-white transition-colors">Crimen Cibernético y OSINT</a></li>
+                    <li><a href="#human-trafficking" class="hover:text-white transition-colors">Investigación de Tráfico Humano</a></li>
+                    <li><a href="#about" class="hover:text-white transition-colors">Sobre Conspirando Y Facturando</a></li>
+                    <li><a href="#submit-video" class="hover:text-white transition-colors">Enviar Evidencia en Video</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 mt-8 pt-6 border-t border-slate-800 text-center text-slate-500">
+            © 2026 Conspirando Y Facturando. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Dark/Light Theme Toggle
+        const themeToggleBtn = document.getElementById('themeToggle');
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // Search Filter Logic
+        const searchInput = document.getElementById('searchInput');
+        const postCards = document.querySelectorAll('.post-card');
+        const filterStatus = document.getElementById('filterStatus');
+        const filterTerm = document.getElementById('filterTerm');
+        const resetSearch = document.getElementById('resetSearch');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            if (query === '') {
+                clearSearchFilter();
+                return;
+            }
+
+            filterStatus.classList.remove('hidden');
+            filterTerm.textContent = query;
+
+            postCards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        resetSearch.addEventListener('click', clearSearchFilter);
+
+        function clearSearchFilter() {
+            searchInput.value = '';
+            filterStatus.classList.add('hidden');
+            postCards.forEach(card => card.style.display = 'block');
+        }
+
+        // Submission Form Logic
+        const submissionForm = document.getElementById('submissionForm');
+        const formSuccess = document.getElementById('formSuccess');
+
+        submissionForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            submissionForm.reset();
+            formSuccess.classList.remove('hidden');
+            setTimeout(() => {
+                formSuccess.classList.add('hidden');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
